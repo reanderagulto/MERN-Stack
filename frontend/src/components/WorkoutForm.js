@@ -9,6 +9,7 @@ const WorkoutForm = () => {
     const [reps, setReps] = useState('')
     const [error, setError] = useState(null)
     const [message, setMessage] = useState(null)
+    const [emptyFields, setEmptyFields] = useState([])
 
     const handleSubmit = async (e) => {
 
@@ -26,6 +27,7 @@ const WorkoutForm = () => {
 
         if(!response.ok){
             setError(json.error)
+            setEmptyFields(json.emptyFields)
         }
         if(response.ok){
             resetForm()
@@ -36,6 +38,7 @@ const WorkoutForm = () => {
         setTimeout(() => {
             setError(null)
             setMessage(null)
+            setEmptyFields([])
         }, 2500)
     }
 
@@ -57,6 +60,7 @@ const WorkoutForm = () => {
                     type="text"
                     onChange={(e) => setTitle(e.target.value)}
                     value={title}
+                    className={emptyFields.includes('title') ? 'error': ''}
                 />
             </div>
             <div className="form-control-group">
@@ -65,6 +69,7 @@ const WorkoutForm = () => {
                     type="number"
                     onChange={(e) => setLoad(e.target.value)}
                     value={load}
+                    className={emptyFields.includes('load') ? 'error': ''}
                 />
             </div>
             <div className="form-control-group">
@@ -73,6 +78,7 @@ const WorkoutForm = () => {
                     type="number"
                     onChange={(e) => setReps(e.target.value)}
                     value={reps}
+                    className={emptyFields.includes('reps') ? 'error': ''}
                 />
             </div>
 

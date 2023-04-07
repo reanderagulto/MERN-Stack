@@ -114,3 +114,23 @@ div.message {
   border-radius: 4px;
   margin: 20px 0;
 }
+input.error{
+  border: 1px solid var(--error);
+}
+span.btn-delete{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25px;
+  height: 25px;
+  padding: 5px;
+  border: radius 50%;;
+  background-color: var(--error);
+  color: white;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+span.btn-delete:hover{
+  background-color: #f2004d;
+}
